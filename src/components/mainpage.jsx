@@ -1,55 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import workintech from '/workintech.svg'
-import './App.css'
-import Header from './components/header'
-import Bannermenu from './components/bannernav'
-import Duyurular from './components/duyurular'
-import Lezzetlernav from './components/lezzetlernav'
-import Lezzetcard from './components/lezzetkartlar'
-import FooterSol from './components/footersol'
-import FooterOrta from './components/footerorta'
-import FooterSag from './components/footersag'
+
+
+import Header from './header'
+import Bannermenu from './bannernav'
+import Duyurular from './duyurular'
+import Lezzetlernav from './lezzetlernav'
+import Lezzetcard from './lezzetkartlar'
+import Footer from './footer'
+
 
 
 function MainPage() {
-    return ( <div id="app">
+  return (<div id="app">
 
-      <Header />
+    <Header />
 
-      <Bannermenu />
-
-      
-
-      <Duyurular/>
-      <section className="lezzetler">
-        <p className="lezzetler-etiket">en çok paketlenen menüler</p>
-        <h2 className="lezzetler-baslik">Acıktıran Kodlara Doyuran Lezzetler</h2>
-
-        <Lezzetlernav/>
-
-        <Lezzetcard/>
-      </section>
+    <Bannermenu />
 
 
-      <footer className="footer">
-        <div className="footer-icerik">
 
-          <FooterSol/>
+    <Duyurular />
+    <section className="lezzetler">
+      <p className="lezzetler-etiket">en çok paketlenen menüler</p>
+      <h2 className="lezzetler-baslik">Acıktıran Kodlara Doyuran Lezzetler</h2>
 
+      <Lezzetlernav />
 
-          <FooterOrta/>
+      <Lezzetcard />
+    </section>
 
+    <Footer/>
 
-          <FooterSag/>
-        </div>
-
-        <div className="footer-alt">
-          <p>© 2023 Teknolojik Yemekler.</p>
-          <i className="fa-brands fa-twitter"></i>
-        </div>
-      </footer>
-    </div> );
+  </div>);
 }
 
 export default MainPage;
