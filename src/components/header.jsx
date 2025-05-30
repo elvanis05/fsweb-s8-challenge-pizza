@@ -1,5 +1,5 @@
 
-const Header = () => {
+const Header = ({SwapFunc}) => {
     return (
         <header className="baslık">
             <div className="banerarkaplan">
@@ -9,7 +9,7 @@ const Header = () => {
                     <span> KOD ACIKTIRIR<br />
                         PIZZA, DOYURUR</span>
                 </h2>
-                <button className="banerbtn">ACIKTIM  </button>
+                <button className="banerbtn" onClick={() =>SwapFunc("Form")}>ACIKTIM</button>
             </div>
         </header>
     )

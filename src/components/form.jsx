@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./form.css";
 
-export default function PizzaForm({ boyut, hamur, ekMalzeme, siparisNotu, adet, HandleAdet, HandleSiparis, HandleMalzeme, HandleHamur, HandleBoyut }) {
+export default function PizzaForm({ boyut, hamur, ekMalzeme, siparisNotu, adet, HandleAdet, HandleSiparis, HandleMalzeme, HandleHamur, HandleBoyut , handleSubmit}) {
 
 
     const malzemeListesi = [
@@ -11,7 +11,7 @@ export default function PizzaForm({ boyut, hamur, ekMalzeme, siparisNotu, adet, 
     ];
 
     return (
-        <div className="pizza-form">
+        <form className="pizza-form" onSubmit={handleSubmit}>
             <header className="form-ust">
                 <img src="../../images/iteration-1-images/logo.svg" alt="Logo" className="logo" />
                 <nav>
@@ -34,9 +34,9 @@ export default function PizzaForm({ boyut, hamur, ekMalzeme, siparisNotu, adet, 
                     <div className="boyut-secimi">
                         <label className="label-baslik">Boyut Seç*</label>
                         <div className="radio-label">
-                            <label><input type="radio" name="boyut" value="Küçük" onChange={HandleBoyut} /> S</label>
-                            <label><input type="radio" name="boyut" value="Orta" onChange={HandleBoyut} /> M</label>
-                            <label><input type="radio" name="boyut" value="Büyük" onChange={HandleBoyut} /> L</label>
+                            <label><input type="radio" name="boyut" value="Küçük" onChange={HandleBoyut} checked={boyut==="Küçük"} /> S</label>
+                            <label><input type="radio" name="boyut" value="Orta" onChange={HandleBoyut} checked={boyut==="Orta"} /> M</label>
+                            <label><input type="radio" name="boyut" value="Büyük" onChange={HandleBoyut} checked={boyut==="Büyük"} /> L</label>
                         </div>
                     </div>
 
@@ -78,9 +78,9 @@ export default function PizzaForm({ boyut, hamur, ekMalzeme, siparisNotu, adet, 
 
                 <div className="alt-kisim">
                     <div className="adet-kontrol">
-                        <button name="azalt" onClick={HandleAdet}>-</button>
+                        <button type="button" name="azalt" onClick={HandleAdet}>-</button>
                         <span>{adet}</span>
-                        <button name="arttır" onClick={HandleAdet}>+</button>
+                        <button type="button" name="arttır" onClick={HandleAdet}>+</button>
                     </div>
 
                     <div className="toplam-ve-buton">
@@ -99,12 +99,12 @@ export default function PizzaForm({ boyut, hamur, ekMalzeme, siparisNotu, adet, 
                     </div>
                 </div>
                 <div className="buton-sagda">
-                    <button className="siparis-ver">SİPARİŞ VER</button>
+                    <button type="submit" className="siparis-ver">SİPARİŞ VER</button>
                 </div>
 
 
 
             </main>
-        </div>
+        </form>
     );
 }

@@ -9,10 +9,10 @@ import Footer from './footer'
 
 
 
-function MainPage() {
+function MainPage({SwapFunc}) {
   return (<div id="app">
 
-    <Header />
+    <Header SwapFunc={SwapFunc} />
 
     <Bannermenu />
 

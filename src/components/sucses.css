@@ -72,6 +72,7 @@ h3 {
     padding: 20px;
     margin-top: 20px;
     border-radius: 8px;
+    width: 75%;
 }
 
 .fiyat-kutusu p {
@@ -81,6 +82,6 @@ h3 {
     margin: 5px 0;
 
 }
-.fiyat-kutusu span{
-    padding-left: 5rem;
+.fiyat-kutusu h4{
+   padding: 0;
 }
