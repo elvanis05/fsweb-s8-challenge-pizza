@@ -3,6 +3,7 @@ import PizzaForm from './components/form'
 import React, { useState, useEffect } from "react";
 import Sucses from './components/sucses';
 import MainPage from "./components/mainpage";
+import axios from "axios";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [siparisNotu, setSiparisNotu] = useState("");
   const [adet, setAdet] = useState(1);
   const [page, setPage] = useState("Ana sayfa")
+  const [createdTime, setCreatedTime] = useState("")
 
   function HandleBoyut(e) {
     setBoyut(e.target.value)
@@ -66,44 +68,71 @@ function App() {
 
   function SwapPage() {
     if (page == "Ana sayfa") {
-     return (<><MainPage SwapFunc={SwapFunc}/></>)
-     
+      return (<><MainPage SwapFunc={SwapFunc} /></>)
+
     }
-    else if (page=="Form"){
-      return(
-      <>
-      <PizzaForm boyut={boyut} hamur={hamur} ekMalzeme={ekMalzeme} siparisNotu={siparisNotu} adet={adet} HandleAdet={HandleAdet} HandleSiparis={HandleSiparis} HandleMalzeme={HandleMalzeme} HandleHamur={HandleHamur} HandleBoyut={HandleBoyut} handleSubmit={handleSubmit}/>
-      </>
+    else if (page == "Form") {
+      return (
+        <>
+          <PizzaForm boyut={boyut} hamur={hamur} ekMalzeme={ekMalzeme} siparisNotu={siparisNotu} adet={adet} HandleAdet={HandleAdet} HandleSiparis={HandleSiparis} HandleMalzeme={HandleMalzeme} HandleHamur={HandleHamur} HandleBoyut={HandleBoyut} handleSubmit={handleSubmit} />
+        </>
       )
     }
     else {
-      return(<Sucses ekMalzeme={ekMalzeme} hamur={hamur} boyut={boyut} adet={adet} />)
+      return (<Sucses ekMalzeme={ekMalzeme} hamur={hamur} boyut={boyut} adet={adet} createdTime={createdTime} />)
     }
   }
-  
-  
-  function SwapFunc(x){
-  setPage(x)
+  async function getAxiosRes() {
+    await axios.post("https://reqres.in/api/pizza", { hamur: hamur, boyut: boyut, eksecim: ekMalzeme },
+      {
+        headers: {
+          "x-api-key": "reqres-free-v1"
+        }
+      }
+    ).then(res => {
+      console.log(res.data)
+      const date = new Date(res.data.createdAt);
+      const formattedDate = date.toLocaleDateString('tr-TR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        timeZone: 'Europe/Istanbul'
+      });
+      setCreatedTime(formattedDate);
+        setPage("Success");
+    })
+      .catch(err => {
+        console.log(err)
+        setPage("Ana sayfa");
+      })
   }
-//HANDLE SUBMİT FUNC
+
+  function SwapFunc(x) {
+    setPage(x)
+  }
+  //HANDLE SUBMİT FUNC
   function handleSubmit(e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!boyut) {
-    alert("Lütfen bir boyut seçin.");
-    return;
-  }
-  if (hamur === "Hamur Kalınlığı") {
-    alert("Lütfen hamur kalınlığı seçin.");
-    return;
-  }
-  if (ekMalzeme.length < 4) {
-    alert("Lütfen en az 4 malzeme seçin.");
-    return;
-  }
+    if (!boyut) {
+      alert("Lütfen bir boyut seçin.");
+      return;
+    }
+    if (hamur === "Hamur Kalınlığı") {
+      alert("Lütfen hamur kalınlığı seçin.");
+      return;
+    }
+    if (ekMalzeme.length < 4) {
+      alert("Lütfen en az 4 malzeme seçin.");
+      return;
+    }
 
-  setPage("Success");
-}
+    getAxiosRes();
+  
+  }
 
 
 
@@ -113,10 +142,8 @@ function App() {
 
   return (
     <>
-    { SwapPage()}
-    <button onClick={() => setPage("Ana sayfa")}>Anasayfa</button>
-            <button onClick={() => setPage("Form")}>Form</button>
-            <button onClick={() => setPage("Success")}>Success</button>
+      {SwapPage()}
+      
     </>
 
   )

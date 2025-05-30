@@ -170,11 +170,10 @@ hr {
 }
 
 .alt-kisim {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: 0.5rem;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
     margin-top: 2rem;
 }
 
@@ -245,7 +244,7 @@ hr {
     font-size: 1rem;
     cursor: pointer;
     border-radius: 6px;
-    width: 52%;
+    width: 67%;
     margin-left: auto;
 }
 .buton-sagda {
@@ -285,26 +284,39 @@ hr {
   }
 
   .alt-kisim {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    align-items: start;
   }
+
+  .adet-kontrol {
+    justify-self: start;
+  }
+
+  .toplam-kutu {
+    justify-self: end;
+    width: 100%;
+  }
+
+  .buton-sagda {
+    justify-content: flex-end;
+  }
+
+  .siparis-ver {
+    width: 48%;
+  }
+}
 
   .adet-kontrol {
     max-width: 100%;
     justify-content: center;
   }
 
-  .toplam-kutu {
-    width: 100%;
-  }
-
-  .siparis-ver {
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .buton-sagda {
-    justify-content: center;
-  }
   
-}
+
+  
+
+  
+  
+

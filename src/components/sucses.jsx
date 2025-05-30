@@ -4,7 +4,7 @@ import "./sucses.css"
 
 
 
-function Sucses({ ekMalzeme, boyut, hamur, adet }) {
+function Sucses({ ekMalzeme, boyut, hamur, adet ,createdTime}) {
 
     const pizzaFiyati = 85.5;
     const ekstraMalzemeFiyati = ekMalzeme.length * 5;
@@ -24,7 +24,8 @@ function Sucses({ ekMalzeme, boyut, hamur, adet }) {
                     <div className="ozett">
                         <p><strong>Boyut:</strong> {boyut}</p>
                         <p><strong>Hamur:</strong> {hamur}</p>
-                        <p><strong>Ek Malzemeler:</strong>{ekMalzeme}</p>
+                        <p><strong>Ek Malzemeler:</strong>{ekMalzeme.join(", ")}</p>
+                        <p><strong>Sipariş Zamanı:</strong>{createdTime}</p>
                     </div>
 
                     <div className="fiyat-kutusu">
