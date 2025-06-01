@@ -25,8 +25,8 @@ export default function PizzaForm({ boyut, hamur, ekMalzeme, siparisNotu, adet, 
 
                     <h1 className="pizza-baslik">Position Absolute Acı Pizza</h1>
                     <p className="fiyat">
-                        <span class="fiyat-sayi">85,50₺</span>
-                        <span class="puan">4.9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(200)</span>
+                        <span className="fiyat-sayi">85,50₺</span>
+                        <span className="puan">4.9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(200)</span>
                     </p>
                     <p className="aciklama">
                         Frontend Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre.
