@@ -3,7 +3,7 @@ const Bannermenu = () => {
 return(
 <nav className="banermenu">
             <a href="">
-              <img src="../images/iteration-2-images/icons/1.svg" alt="YENİ! Kore"/>
+              <img src="/images/iteration-2-images/icons/1.svg" alt="YENİ! Kore"/>
               <span>YENİ! Kore</span>
             </a>
             <a href="">
